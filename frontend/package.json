@@ -1,24 +1,22 @@
 {
   "name": "tesis-frontend",
   "version": "1.0.0",
-  "engines": {
-    "node": ">=20.19.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",
     "preview": "vite preview",
     "start": "vite preview --port $PORT"
   },
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "dependencies": {
+    "vite": "^7.0.5",
     "axios": "^1.10.0",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
     "xlsx": "^0.18.5"
   },
-  "devDependencies": {
-    "vite": "^7.0.5"
-  }
+  "devDependencies": {}
 }
-
 
