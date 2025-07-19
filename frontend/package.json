@@ -11,12 +11,13 @@
     "node": ">=20.19.0"
   },
   "dependencies": {
-    "vite": "^7.0.5",
     "axios": "^1.10.0",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
+    "vite": "^7.0.5",
     "xlsx": "^0.18.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "vite-plugin-static-copy": "^3.1.1"
+  }
 }
-

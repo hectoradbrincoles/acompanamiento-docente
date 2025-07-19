@@ -1,6 +1,7 @@
 // vite.config.mjs
 import { defineConfig } from 'vite';
 import path from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   root: '.', // Asegura que el index.html esté en la raíz del proyecto
@@ -9,7 +10,7 @@ export default defineConfig({
     open: '/index.html',
     strictPort: true,
     fs: {
-      strict: false // 🔥 Esto permite servir archivos fuera de la raíz (rutas anidadas)
+      strict: false // Permite servir archivos fuera de la raíz
     }
   },
   resolve: {
@@ -20,6 +21,16 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, 'pages')
     }
   },
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'pages',  // carpeta que quieres copiar
+          dest: ''       // copia directamente en la raíz del dist
+        }
+      ]
+    })
+  ],
   build: {
     outDir: 'dist',
     emptyOutDir: true
