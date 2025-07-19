@@ -1,6 +1,9 @@
 {
   "name": "tesis-frontend",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",
@@ -17,4 +20,5 @@
     "vite": "^7.0.5"
   }
 }
+
 
