@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel del Coordinador | Sistema de Evaluación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+<body>
+
+  <!-- ✅ Header Institucional -->
+  <div class="container-fluid py-3 mb-2 border-bottom bg-white">
+    <div class="row align-items-center">
+      <div class="col-4 text-center">
+        <img src="../../img/ministerio.jpg" alt="Ministerio de Educación" height="60">
+      </div>
+      <div class="col-4 text-center">
+        <img src="../../img/detp.jpg" alt="Dirección de Educación Técnico Profesional" height="60">
+      </div>
+      <div class="col-4 text-center">
+        <img src="../../img/padre_fantino.jpg" alt="Politécnico Padre Fantino" height="60">
+      </div>
+    </div>
+    <div class="text-center mt-2">
+      <strong>Ministerio de Educación</strong><br>
+      <strong>Dirección de Educación Técnico Profesional</strong><br>
+      <strong>Instituto Politécnico Padre Fantino</strong><br>
+      <span style="font-size:1.1em; display:block; margin-top: 10px;">
+        Formulario de Acompañamiento Docente en Centros Educativos de la<br>
+        Modalidad Técnico Profesional, Año Escolar 2024-2025.
+      </span>
+    </div>
+  </div>
+
+  <!-- 🔝 Barra del Panel -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <span class="navbar-brand fw-bold">Panel del Coordinador</span>
+      <div class="ms-auto">
+        <button class="btn btn-light btn-sm" onclick="cerrarSesion()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🧾 Contenido principal -->
+  <div class="container py-4">
+    <h2 class="mb-4">Bienvenido, <span id="coordinadorNombre"></span></h2>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card text-bg-info shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Docentes Asignados</h5>
+            <p class="card-text fs-4" id="totalDocentes">0</p>
+            <a href="docentes.html" class="btn btn-light btn-sm">Ver docentes</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-bg-success shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Proyectos Asignados</h5>
+            <p class="card-text fs-4" id="totalProyectos">0</p>
+            <a href="proyectos.html" class="btn btn-light btn-sm">Ver proyectos</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-bg-warning shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Evaluaciones</h5>
+            <p class="card-text fs-4" id="totalEvaluaciones">0</p>
+            <a href="evaluaciones.html" class="btn btn-light btn-sm">Ver evaluaciones</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📊 Sección de Reportes -->
+    <div class="card border-secondary">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">Reportes del Coordinador</h5>
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="../../reportes/reporte-desempeno.html" class="list-group-item list-group-item-action">
+          📈 Reporte de Desempeño del Docente
+        </a>
+        <a href="../../reportes/reporte-comparativo.html" class="list-group-item list-group-item-action">
+          📊 Reporte Comparativo por Asignatura
+        </a>
+        <a href="../../reportes/historial-docente.html" class="list-group-item list-group-item-action">
+          🕘 Historial de Evaluaciones
+        </a>
+        <a href="../../reportes/historial-detallado.html" class="list-group-item list-group-item-action">
+          🧾 Historial Detallado por Año y Especialidad
+        </a>
+        <a href="../../reportes/historial-observacion.html" class="list-group-item list-group-item-action">
+          👁️ Reporte de Observación de Clases
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Footer Institucional -->
+  <footer class="container-fluid bg-light text-center py-3 border-top mt-5">
+    <div>
+      <small>
+        &copy; 2024 Instituto Politécnico Padre Fantino - Proyecto de Tesis | Todos los derechos reservados.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/coordinador/dashboardCoordinador.js"></script>
+</body>
+</html>

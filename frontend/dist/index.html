@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio | Formulario Acompañamiento Docente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- ✅ Ruta corregida usando alias de Vite -->
+  <link rel="stylesheet" href="/@styles/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR moderna con login -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="/@img/ministerio.jpg" alt="Ministerio" height="40" class="me-2" />
+        <img src="/@img/detp.jpg" alt="DETP" height="40" class="me-2" />
+        <img src="/@img/padre_fantino.jpg" alt="Padre Fantino" height="40" />
+        <span class="fw-bold ms-3" style="color:#444;">Instituto Politécnico Padre Fantino</span>
+      </a>
+      <div class="ms-auto">
+        <a href="/pages/login.html" class="btn btn-outline-primary">Iniciar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO DE INICIO -->
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h1 class="display-5 fw-bold mb-3">Bienvenido al Sistema de Acompañamiento Docente</h1>
+        <p class="lead mb-4">
+          Este sistema permite el registro y acompañamiento de la labor docente en centros educativos de la modalidad Técnico Profesional.
+          <ul>
+            <li><b>Registrar evaluaciones</b> de docentes por los acompañantes.</li>
+            <li><b>Ver reportes</b> y gráficos de desempeño docente.</li>
+            <li>Acceso seguro con usuario y contraseña.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="/@img/ministerio.jpg" alt="Ministerio de Educación" class="mb-3" height="120" />
+        <img src="/@img/detp.jpg" alt="DETP" class="mb-3" height="120" />
+        <img src="/@img/padre_fantino.jpg" alt="Politécnico Padre Fantino" class="mb-3" height="120" />
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center py-4 bg-light mt-5" style="font-size: 0.95em;">
+    &copy; 2024 Instituto Politécnico Padre Fantino | Sistema de Acompañamiento Docente
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

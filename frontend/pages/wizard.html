@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Acompañamiento Docente - Wizard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    #wizardProgressBarContainer {
+      height: 8px;
+      background-color: #e9ecef;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    #wizardProgressBar {
+      height: 100%;
+      width: 0%;
+      background-color: #0d6efd;
+      transition: width 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<div class="container my-5">
+  <form id="wizardForm">
+
+    <!-- ✅ Barra de Progreso -->
+    <div id="wizardProgressBarContainer">
+      <div id="wizardProgressBar"></div>
+    </div>
+
+    <!-- ✅ Campos ocultos -->
+    <input type="hidden" id="docenteId" name="docente" value="">
+    <input type="hidden" id="coordinadorId" name="coordinador" value="">
+
+    <!-- Paso 1: Datos generales -->
+    <div class="step active" id="step-0">
+      <h4>Datos Generales</h4>
+      <div class="row g-3">
+        <div class="col-md-4"><label>Fecha</label><input type="date" name="fecha" class="form-control" required></div>
+        <div class="col-md-4"><label>Hora de Inicio</label><input type="time" name="horaInicio" class="form-control" required></div>
+        <div class="col-md-4"><label>Centro Educativo</label><input type="text" name="centroEducativo" class="form-control" required></div>
+        <div class="col-md-4"><label>Distrito Educativo</label><input type="text" name="distrito" class="form-control"></div>
+        <div class="col-md-4"><label>Código del Centro</label><input type="text" name="codigoCentro" class="form-control"></div>
+        <div class="col-md-4"><label>Coordinador Acompañante</label><input type="text" name="nombreCoordinador" class="form-control" readonly></div>
+        <div class="col-md-4"><label>Correo del Coordinador</label><input type="email" name="correoCoordinador" class="form-control" readonly></div>
+        <div class="col-md-4"><label>Docente</label><input type="text" name="docenteNombre" class="form-control" readonly></div>
+        <div class="col-md-4"><label>Correo Institucional</label><input type="email" name="correoInstitucional" class="form-control" readonly></div>
+      </div>
+    </div>
+
+    <!-- Paso 2: Módulo Formativo -->
+    <div class="step" id="step-1">
+      <h4>Aspectos Relacionados al Módulo</h4>
+      <div class="mb-3">
+        <label>Familia Profesional (marca la que aplica):</label>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="familias" value="Gestión Administrativa y Tributaria" id="fa1"><label class="form-check-label" for="fa1">Gestión Administrativa y Tributaria</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="familias" value="Minería" id="fa2"><label class="form-check-label" for="fa2">Minería</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="familias" value="Mecanizado" id="fa3"><label class="form-check-label" for="fa3">Mecanizado</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="familias" value="Equipos Electrónicos" id="fa4"><label class="form-check-label" for="fa4">Equipos Electrónicos</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="familias" value="Soportes de redes y equipos informáticos" id="fa5"><label class="form-check-label" for="fa5">Soportes de redes y equipos informáticos</label></div>
+      </div>
+      <div class="mb-3"><label>Módulo Formativo:</label><input type="text" name="moduloFormativo" class="form-control"></div>
+      <div class="mb-3"><label>Resultado de Aprendizaje (RA):</label><textarea name="resultadoAprendizaje" class="form-control" rows="2"></textarea></div>
+    </div>
+
+    <!-- Paso dinámico: Criterios y preguntas -->
+    <div id="pasosDinamicos"></div>
+
+    <!-- Navegación -->
+    <div class="form-navigation d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-secondary" id="prevBtn">Anterior</button>
+      <button type="button" class="btn btn-primary" id="nextBtn">Siguiente</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/wizard.js"></script>
+<script src="../js/formulario.js"></script>
+</body>
+</html>

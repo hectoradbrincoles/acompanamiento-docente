@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel del Administrador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 y Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/styles.css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background-color: #212529;
+      color: white;
+      transition: left 0.3s;
+    }
+
+    .sidebar .brand {
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #343a40;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: #ced4da;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #495057;
+      color: white;
+    }
+
+    .sidebar i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Menú móvil oculto */
+    @media (max-width: 767.98px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -260px;
+        width: 250px;
+        z-index: 1050;
+        overflow-y: auto;
+      }
+
+      .sidebar.mostrar {
+        left: 0;
+      }
+
+      #overlay {
+        display: none;
+        position: fixed;
+        z-index: 1040;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      #overlay.activo {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🔳 Barra superior móvil -->
+  <nav class="navbar navbar-dark bg-dark d-md-none">
+    <div class="container-fluid">
+      <button class="btn btn-outline-light" id="btnMenu">
+        <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+      </button>
+      <span class="navbar-brand mx-auto">Panel del Administrador</span>
+    </div>
+  </nav>
+
+  <!-- 🟤 Capa oscura para cerrar menú en móvil -->
+  <div id="overlay"></div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Menú lateral -->
+      <aside class="col-md-3 col-lg-2 sidebar p-0" id="sidebar">
+        <div class="brand d-none d-md-block">Panel del Administrador</div>
+        <a href="/pages/admin/inicio.html" target="contenido" class="active"><i class="bi bi-bar-chart"></i>Dashboard</a>
+        <a href="/pages/usuarios.html" target="contenido"><i class="bi bi-people-fill"></i>Usuarios</a>
+        <a href="/pages/asignaturas.html" target="contenido"><i class="bi bi-journal-bookmark-fill"></i>Asignaturas</a>
+        <a href="/pages/especialidades.html" target="contenido"><i class="bi bi-bezier"></i>Especialidades</a>
+        <a href="/pages/admin/departamentos.html" target="contenido"><i class="bi bi-diagram-3-fill"></i>Departamentos</a>
+        <a href="/pages/periodos.html" target="contenido"><i class="bi bi-calendar2-week"></i>Periodos</a>
+        <a href="/pages/centros.html" target="contenido"><i class="bi bi-building"></i>Centros</a>
+        <a href="/pages/criterios.html" target="contenido"><i class="bi bi-clipboard-check"></i>Criterios</a>
+        <a href="/pages/admin/asignar-docentes.html" target="contenido"><i class="bi bi-person-check"></i>Asignar Docentes</a>
+        <a href="/pages/reportes.html" target="contenido"><i class="bi bi-bar-chart-line-fill"></i>Reportes</a>
+        <a href="#" onclick="cerrarSesion()"><i class="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
+      </aside>
+
+      <!-- Contenido principal -->
+      <main class="col-md-9 col-lg-10 p-0">
+        <iframe name="contenido" src="/pages/admin/inicio.html"></iframe>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function cerrarSesion() {
+      alert('Sesión cerrada');
+      window.location.href = '../../index.html';
+    }
+
+    const enlaces = document.querySelectorAll('.sidebar a');
+    enlaces.forEach(link => {
+      link.addEventListener('click', function () {
+        enlaces.forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+
+        // Cerrar menú y fondo si estamos en móvil
+        if (window.innerWidth < 768) {
+          document.getElementById('sidebar').classList.remove('mostrar');
+          document.getElementById('overlay').classList.remove('activo');
+        }
+      });
+    });
+
+    // Abrir menú en móviles
+    document.getElementById('btnMenu').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('mostrar');
+      document.getElementById('overlay').classList.toggle('activo');
+    });
+
+    // Cerrar si se hace clic fuera del menú
+    document.getElementById('overlay').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('mostrar');
+      document.getElementById('overlay').classList.remove('activo');
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,233 @@
+<!-- 📁 frontend/pages/formulario.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Acompañamiento Docente - Wizard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<div class="container my-5">
+
+  <!-- ✅ Encabezado institucional -->
+  <div class="row align-items-center mb-2">
+    <div class="col-4 text-center">
+      <img src="../img/ministerio.jpg" alt="Ministerio de Educación" height="60">
+    </div>
+    <div class="col-4 text-center">
+      <img src="../img/detp.jpg" alt="DETP" height="60">
+    </div>
+    <div class="col-4 text-center">
+      <img src="../img/padre_fantino.jpg" alt="Politécnico Padre Fantino" height="60">
+    </div>
+  </div>
+  <div class="text-center mb-2">
+    <strong>Ministerio de Educación</strong><br>
+    <strong>Dirección de Educación Técnico Profesional</strong><br>
+    <strong>Instituto Politécnico Padre Fantino</strong><br>
+    <span style="font-size:1.1em; display:block; margin-top: 10px;">
+      Formulario de Acompañamiento Docente en Centros Educativos de la<br>
+      Modalidad Técnico Profesional, Año Escolar 2024-2025.
+    </span>
+  </div>
+
+  <h1 class="text-center mb-4">Formulario de Acompañamiento Docente</h1>
+
+  <!-- ✅ Barra de progreso -->
+  <div class="wizard-progress mb-4">
+    <div class="wizard-progress-bar bg-primary" id="wizardProgressBar" style="width: 5%"></div>
+  </div>
+
+  <!-- ✅ Formulario -->
+  <form id="wizardForm" autocomplete="off">
+
+    <!-- ✅ Campos ocultos ACTUALIZADOS -->
+    <input type="hidden" name="docenteId" id="docenteId" value="">
+    <input type="hidden" name="coordinadorId" id="coordinadorId" value="">
+
+    <!-- ✅ Paso 0: Datos Generales -->
+    <div class="step active" id="step-0">
+      <h4>Datos Generales</h4>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label>Fecha</label>
+          <input type="date" name="fecha" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label>Hora de Inicio</label>
+          <input type="time" name="horaInicio" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label>Centro Educativo</label>
+          <input type="text" name="centroEducativo" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label>Distrito Educativo</label>
+          <input type="text" name="distrito" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label>Código del Centro</label>
+          <input type="text" name="codigoCentro" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label>Coordinador Acompañante</label>
+          <input type="text" name="nombreCoordinador" class="form-control" readonly>
+        </div>
+        <div class="col-md-4">
+          <label>Correo del Coordinador</label>
+          <input type="email" name="correoCoordinador" class="form-control" readonly>
+        </div>
+        <div class="col-md-4">
+          <label>Docente</label>
+          <input type="text" name="docenteNombre" class="form-control" readonly>
+        </div>
+        <div class="col-md-4">
+          <label>Correo Institucional</label>
+          <input type="email" name="correoInstitucional" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Paso 1: Información del módulo -->
+    <div class="step" id="step-1">
+      <h4>Aspectos Relacionados al Módulo</h4>
+      <div class="mb-3">
+        <label>Familia Profesional (marca la que aplica):</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="familias" value="Gestión Administrativa y Tributaria" id="fa1">
+          <label class="form-check-label" for="fa1">Gestión Administrativa y Tributaria</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="familias" value="Minería" id="fa2">
+          <label class="form-check-label" for="fa2">Minería</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="familias" value="Mecanizado" id="fa3">
+          <label class="form-check-label" for="fa3">Mecanizado</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="familias" value="Equipos Electrónicos" id="fa4">
+          <label class="form-check-label" for="fa4">Equipos Electrónicos</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="familias" value="Soportes de redes y equipos informáticos" id="fa5">
+          <label class="form-check-label" for="fa5">Soportes de redes y equipos informáticos</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Módulo Formativo:</label>
+        <input type="text" name="moduloFormativo" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>Resultado de Aprendizaje (RA):</label>
+        <textarea class="form-control" name="resultadoAprendizaje" rows="2" required></textarea>
+      </div>
+    </div>
+
+    <!-- ✅ Paso 2: Planificación, Acciones de Mejora y Observaciones -->
+    <div class="step" id="step-2">
+      <h4>Planificación y Observaciones</h4>
+      <div class="mb-3">
+        <label>Asignatura</label>
+        <input type="text" name="asignatura" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label>Acciones de mejora</label>
+        <textarea name="accionesMejora" class="form-control" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label>Observaciones</label>
+        <textarea name="observaciones" class="form-control" required></textarea>
+      </div>
+      <h5 class="mt-4">Planificación</h5>
+      <div class="mb-3">
+        <label>Contenidos</label>
+        <select name="planificacion.contenidos" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Instrumentos</label>
+        <select name="planificacion.instrumentos" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Fechas de actividades</label>
+        <select name="planificacion.fechasActividades" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Actividades</label>
+        <select name="planificacion.actividades" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Elementos Bloom</label>
+        <select name="planificacion.bloomElementos" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Nivel Bloom</label>
+        <select name="planificacion.bloomNivel" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Encabezado</label>
+        <select name="planificacion.encabezado" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Ordenanza</label>
+        <select name="planificacion.ordenanza" class="form-control" required>
+          <option value="">Seleccione</option>
+          <option value="Sí">Sí</option>
+          <option value="Sí, pero puede mejorar">Sí, pero puede mejorar</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ✅ Paso 3+: criterios dinámicos -->
+    <div id="pasosDinamicos"></div>
+
+    <!-- ✅ Navegación -->
+    <div class="d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-secondary" id="prevBtn">Anterior</button>
+      <button type="button" class="btn btn-primary" id="nextBtn">Siguiente</button>
+    </div>
+  </form>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/wizard.js"></script>
+<script src="../js/formulario.js"></script>
+</body>
+</html>

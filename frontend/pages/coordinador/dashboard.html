@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel del Coordinador | Sistema de Evaluación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background-color: #212529;
+      color: white;
+      transition: left 0.3s;
+    }
+
+    .sidebar .brand {
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #343a40;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: #ced4da;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #495057;
+      color: white;
+    }
+
+    .sidebar i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100vh;
+    }
+
+    @media (max-width: 767.98px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -260px;
+        width: 250px;
+        z-index: 1050;
+        overflow-y: auto;
+      }
+
+      .sidebar.mostrar {
+        left: 0;
+      }
+
+      #overlay {
+        display: none;
+        position: fixed;
+        z-index: 1040;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      #overlay.activo {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🟦 Barra superior (responsive) -->
+  <nav class="navbar navbar-dark bg-primary d-md-none">
+    <div class="container-fluid">
+      <button class="btn btn-outline-light" id="btnMenu"><i class="bi bi-list" style="font-size: 1.5rem;"></i></button>
+      <span class="navbar-brand mx-auto">Panel del Coordinador</span>
+    </div>
+  </nav>
+
+  <!-- Fondo oscuro para cerrar menú en móvil -->
+  <div id="overlay"></div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Menú lateral -->
+      <aside class="col-md-3 col-lg-2 sidebar p-0" id="sidebar">
+        <div class="brand d-none d-md-block">Panel del Coordinador</div>
+        <a href="/pages/coordinador/inicio.html" target="contenido" class="active"><i class="bi bi-house"></i>Inicio</a>
+        <a href="/pages/coordinador/docentes.html" target="contenido"><i class="bi bi-person-lines-fill"></i>Docentes Asignados</a>
+        <a href="/pages/coordinador/proyectos.html" target="contenido"><i class="bi bi-folder2-open"></i>Proyectos</a>
+        <a href="/pages/coordinador/evaluaciones.html" target="contenido"><i class="bi bi-clipboard-data"></i>Evaluaciones</a>
+
+        <div class="border-top border-light mt-2 mb-1 mx-3"></div>
+        <div class="text-uppercase small text-muted px-3">Reportes</div>
+        <a href="/pages/coordinador/reportes/reporte-desempeno.html" target="contenido"><i class="bi bi-graph-up"></i>Desempeño Docente</a>
+        <a href="/pages/coordinador/reportes/reporte-comparativo.html" target="contenido"><i class="bi bi-bar-chart"></i>Comparativo por Asignatura</a>
+        <a href="/pages/coordinador/reportes/historial-docente.html" target="contenido"><i class="bi bi-clock-history"></i>Historial Evaluaciones</a>
+        <a href="/pages/coordinador/reportes/historial-detallado.html" target="contenido"><i class="bi bi-archive"></i>Detalle por Año</a>
+        <a href="/pages/coordinador/reportes/historial-observacion.html" target="contenido"><i class="bi bi-eye-fill"></i>Observación de Clases</a>
+
+        <div class="border-top border-light mt-2 mx-3"></div>
+        <a href="#" onclick="cerrarSesion()"><i class="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
+      </aside>
+
+      <!-- Contenido principal -->
+      <main class="col-md-9 col-lg-10 p-0">
+        <iframe name="contenido" src="/pages/coordinador/inicio.html"></iframe>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function cerrarSesion() {
+      alert('Sesión cerrada');
+      window.location.href = '/index.html';
+    }
+
+    const enlaces = document.querySelectorAll('.sidebar a');
+    enlaces.forEach(link => {
+      link.addEventListener('click', function () {
+        enlaces.forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+
+        if (window.innerWidth < 768) {
+          document.getElementById('sidebar').classList.remove('mostrar');
+          document.getElementById('overlay').classList.remove('activo');
+        }
+      });
+    });
+
+    document.getElementById('btnMenu').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('mostrar');
+      document.getElementById('overlay').classList.toggle('activo');
+    });
+
+    document.getElementById('overlay').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('mostrar');
+      document.getElementById('overlay').classList.remove('activo');
+    });
+  </script>
+
+</body>
+</html>

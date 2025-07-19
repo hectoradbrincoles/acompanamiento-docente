@@ -1,0 +1,123 @@
+<!-- 📁 frontend/pages/criterios.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Criterios de Evaluación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ✅ Bootstrap & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container my-5">
+    <h2 class="mb-4 text-primary">📋 Gestión de Criterios de Evaluación</h2>
+
+    <!-- 🔢 Campo para definir la ponderación final -->
+    <div class="mb-4 row">
+      <label class="col-sm-3 col-form-label fw-bold">Ponderación Final (puntos totales):</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control" id="ponderacionFinal" min="1" value="100">
+      </div>
+      <div class="col-sm-6 text-muted small mt-2">
+        Esta puntuación será dividida entre todos los criterios creados. Cada vez que se agregue o elimine un criterio, se recalculará automáticamente.
+      </div>
+    </div>
+
+    <!-- 📝 Formulario para crear o editar criterios -->
+    <form id="formCriterio" class="row g-3 mb-4 needs-validation" novalidate>
+      <div class="col-md-5">
+        <label class="form-label">Título <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="titulo" required maxlength="100">
+        <div class="invalid-feedback">Este campo es obligatorio.</div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" maxlength="300">
+      </div>
+      <div class="col-md-1 d-flex align-items-end gap-2">
+        <button type="submit" class="btn btn-success w-100" title="Guardar"><i class="bi bi-save"></i></button>
+        <button type="button" class="btn btn-secondary w-100 d-none" id="btnCancelar" title="Cancelar edición"><i class="bi bi-x-lg"></i></button>
+      </div>
+    </form>
+
+    <!-- 📄 Tabla de criterios -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark text-center">
+          <tr>
+            <th style="width: 30%;">Título</th>
+            <th style="width: 45%;">Descripción</th>
+            <th style="width: 10%;">Ponderación</th>
+            <th style="width: 15%;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="listaCriterios" class="text-center">
+          <!-- Criterios se cargarán aquí dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 📦 Modal para agregar/editar pregunta -->
+  <div class="modal fade" id="modalPregunta" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <form id="formPregunta">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="modalTituloPregunta">📝 Nueva Pregunta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body row g-3">
+            <div class="col-md-12">
+              <label class="form-label">Texto de la Pregunta <span class="text-danger">*</span></label>
+              <textarea class="form-control" id="textoPregunta" rows="3" required></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Tipo de Pregunta</label>
+              <select class="form-select" id="tipoPregunta" required>
+                <option value="">Seleccione...</option>
+                <option value="abierta">Respuesta Abierta</option>
+                <option value="multiple">Selección Múltiple</option>
+                <option value="unica">Opción Única</option>
+                <option value="escala">Escala de Valoración (1-5)</option>
+                <option value="si_no">Sí / No</option>
+                <option value="rubrica">Rúbrica</option>
+                <option value="descriptiva">Descriptiva (sin calificación)</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Valor (%) o puntos</label>
+              <input type="number" class="form-control" id="valorPregunta" min="0" step="0.01" placeholder="Ej. 10" required>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center mt-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="llevaCalificacion" checked>
+                <label class="form-check-label" for="llevaCalificacion">
+                  ¿Esta pregunta será calificada?
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/criterios.js"></script>
+  <script src="../js/preguntas.js"></script>
+</body>
+</html>
+

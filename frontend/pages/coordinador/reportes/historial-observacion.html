@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Historial de Observaciones | Sistema Docente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles/styles.css" />
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">📋 Historial de Observación de Clases</h2>
+
+    <!-- FILTROS -->
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="filtroAnio" class="form-label">📅 Filtrar por Año:</label>
+        <select id="filtroAnio" class="form-select">
+          <option value="">Todos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- BOTONES DE EXPORTACIÓN -->
+    <div class="mb-4 d-flex gap-3">
+      <button id="btnExportPDF" class="btn btn-danger btn-sm">📄 Exportar PDF</button>
+      <button id="btnExportExcel" class="btn btn-success btn-sm">📊 Exportar Excel</button>
+    </div>
+
+    <!-- TABLA -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-sm" id="tablaObservacion">
+        <thead class="table-secondary text-center">
+          <tr>
+            <th>#</th>
+            <th>Docente</th>
+            <th>Asignatura</th>
+            <th>Módulo</th>
+            <th>Fecha</th>
+            <th>Observador</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="7" class="text-center">Cargando historial...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LIBRERÍAS PARA EXPORTAR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- ✅ Script funcional -->
+  <script type="module" src="../../../js/reportes/historialObservacion.js"></script>
+</body>
+</html>
